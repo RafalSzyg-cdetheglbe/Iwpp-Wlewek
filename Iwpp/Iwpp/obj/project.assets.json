@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rafał\\source\\repos\\Iwpp\\Iwpp\\Iwpp.csproj",
+      "projectUniqueName": "C:\\Users\\Rafał\\Desktop\\Iwpp-Wlewek\\Iwpp\\Iwpp\\Iwpp.csproj",
       "projectName": "Iwpp",
-      "projectPath": "C:\\Users\\Rafał\\source\\repos\\Iwpp\\Iwpp\\Iwpp.csproj",
+      "projectPath": "C:\\Users\\Rafał\\Desktop\\Iwpp-Wlewek\\Iwpp\\Iwpp\\Iwpp.csproj",
       "packagesPath": "C:\\Users\\Rafał\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rafał\\source\\repos\\Iwpp\\Iwpp\\obj\\",
+      "outputPath": "C:\\Users\\Rafał\\Desktop\\Iwpp-Wlewek\\Iwpp\\Iwpp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Rafał\\AppData\\Roaming\\NuGet\\NuGet.Config",

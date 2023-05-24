@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Iwpp
 {
@@ -23,6 +25,13 @@ namespace Iwpp
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void zapiszDoPliku(String text)
+        {
+            string sciezka = @"C:\Sciezka\Do\Pliku.txt";
+
+           // File.WriteAllText(sciezka, tekst);
         }
 
         private void licz_Click(object sender, RoutedEventArgs e)
