@@ -39,8 +39,9 @@ namespace Iwpp
 
         Boolean czyJestJuzPlik;
 
+        //TODO DODATKOWA WALIDACJA
 
-     
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,10 +52,6 @@ namespace Iwpp
         private void zapiszDoPliku(String tabelowe, String dane)
         {
             String nazwaPliku = nazwa_pliku.Text+".xml";
-
-
-          
-
 
             if (!File.Exists(nazwaPliku)){
                 File.WriteAllText(nazwaPliku, tabelowe + '\n' + dane);
@@ -68,9 +65,10 @@ namespace Iwpp
 
    
         private void licz_Click(object sender, RoutedEventArgs e)
-        { 
-        
-           
+        {
+
+            //TODO PRAWIDLOWE WZORY
+
 
             Double wysokkoscW = Double.Parse(wysokosc.Text);
             Double szerokoscS= Double.Parse(szerokosc.Text);
@@ -143,6 +141,8 @@ namespace Iwpp
         private void szerokosc_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
+
             masowy_przeplyw_staly.Text = "Wartosc";
             obj_przepl_stali.Text = "Wartosc";
 
@@ -151,6 +151,9 @@ namespace Iwpp
 
         private void wysokosc_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
+
 
             masowy_przeplyw_staly.Text = "Wartosc2";
             obj_przepl_stali.Text = "Wartosc2";
@@ -161,6 +164,11 @@ namespace Iwpp
 
         private void ilosc_zyl_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
+
+
+
             masowy_przeplyw_staly.Text = "Wartosc3";
             obj_przepl_stali.Text = "Wartosc3";
             zapisz_btn.IsEnabled = false;
@@ -170,6 +178,9 @@ namespace Iwpp
         private void predkosc_wlewania_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
+
+
             masowy_przeplyw_staly.Text = "Wartosc4";
             obj_przepl_stali.Text = "Wartosc4";
             zapisz_btn.IsEnabled = false;
@@ -178,6 +189,10 @@ namespace Iwpp
 
         private void g_stali_stale_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
+
+
             masowy_przeplyw_staly.Text = "Wartosc6";
             obj_przepl_stali.Text = "Wartosc6";
             zapisz_btn.IsEnabled = false;
@@ -186,6 +201,11 @@ namespace Iwpp
 
         private void g_stali_ciekle_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+
+            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
+
+
             masowy_przeplyw_staly.Text = "Wartosc7";
             obj_przepl_stali.Text = "Wartosc7";
 
