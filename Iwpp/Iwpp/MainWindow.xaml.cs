@@ -35,9 +35,16 @@ namespace Iwpp
         String przeplywWJednym;
         String ObjwMin;
         String nazwaPliku;
+        String wysokoscw;
+        String szerokoscw;
+        String iloscZyl;
+        String predkoscWylewania;
+        String gestoscStaliWStanieStalym;
+        String gestoscStaliWStanieCieklym;
 
 
-        Boolean czyJestJuzPlik;
+
+    Boolean czyJestJuzPlik;
 
         //TODO DODATKOWA WALIDACJA
 
@@ -66,7 +73,7 @@ namespace Iwpp
 
             //TODO PRAWIDLOWE WZORY
 
-            Double wysokkoscW = Double.Parse(wysokosc.Text);
+            Double wysokoscW = Double.Parse(wysokosc.Text);
             Double szerokoscS= Double.Parse(szerokosc.Text);
             Double wspolczynnikSkali = Double.Parse(skala_lewa.Text) / Double.Parse(skalwa_prawa.Text);
             Double predkoscWlewania = Double.Parse(predkosc_wlewania.Text);
@@ -77,7 +84,7 @@ namespace Iwpp
             //POPRAWIONE
             Double skalaPrzeplywu = Math.Pow(wspolczynnikSkali, 5.0 / 2);
             //POPRAWIONE
-            Double masowyPrzeplywStaliWSS = iloscZyl * wysokkoscW * szerokoscS * (predkoscWlewania/60) * 7600;
+            Double masowyPrzeplywStaliWSS = iloscZyl * wysokoscW * szerokoscS * (predkoscWlewania/60) * 7600;
             //POPRAWIONE
             Double objetosciowyPrzeplywWSC = masowyPrzeplywStaliWSS / 7000;
             //POPRAWIONE
@@ -101,10 +108,23 @@ namespace Iwpp
             this.przeplywMs= przeplywWMetrach.ToString(); ;
             this.przeplywWJednym=przeplywWMetrachDlaJednejZyly.ToString(); ;
             this.ObjwMin = przeplywWMetrachNaMinute.ToString(); 
+            this.wysokoscw = wysokoscW.ToString();
+            this.szerokoscw = szerokoscS.ToString();
+            this.iloscZyl = iloscZyl.ToString(); 
+            this.predkoscWylewania= predkoscWlewania.ToString(); 
+            this.gestoscStaliWStanieStalym = gestoscStali.ToString();
+            this.gestoscStaliWStanieCieklym = gestoscCiekla.ToString();
+        
 
 
             DaneZPliku daneZPliku = new DaneZPliku();
             daneZPliku.NazwaPliku = this.nazwaPliku;
+            daneZPliku.Wysokosc = this.wysokoscw;
+            daneZPliku.Szerokosc = this.szerokoscw;
+            daneZPliku.IloscZył = this.iloscZyl;
+            daneZPliku.PredkoscWylewania = this.predkoscWylewania;
+            daneZPliku.GęstoscStaliWStanieStalym = this.gestoscStaliWStanieStalym;
+            daneZPliku.GęstoscStaliWStanieCieklym = this.gestoscStaliWStanieCieklym;
             daneZPliku.ObjetoscwMin = this.ObjwMin;
             daneZPliku.PrzeplywWJednym = this.przeplywMs;
             daneZPliku.PrzeplywObjetosciowy = this.przeplywObj;
@@ -120,9 +140,10 @@ namespace Iwpp
 
         private void zapisz_btn_Click(object sender, RoutedEventArgs e)
         {
-            String przeplywObj =
+            String przeplywObj = this.wysokosc + " | " + this.szerokosc + " | " + this.ilosc_zyl + " | " + this.g_stali_ciekle + " | " + this.g_stali_stale + " | " + this.predkosc_wlewania + " | " + this.masowy_przeplyw_staly + " | " + this.obj_przepl_stali  +" | " +
                 this.przeplywObj + " | " + this.skalaPrzeplywu + " | " + this.przeplywWJednymLnaMin + " | " + this.przeplywMs + " | " + this.przeplywWJednym + " | " + this.ObjwMin + " | ";
-            String tabelowe=" Przepływ Objetosciowy "+ " | "+ " Skala Przeplywu " + " | " + " Przepływ w jednym " + " | " + " Przepływ w m/s " + " | " + " przepływ w jednym " + " | " + " Objetosc w Min " + " | ";
+            String tabelowe="Szerokość "+ " | "+ "Wysokość " + " | " + "Ilość żył " + " | " + "Gęstość stali w stanie stałym " + " | " + "Gęstość stali w stanie ciekłym " + " | " + "Prędkość wylewania " + " | " + "Masowy Przepływ stali " + " | " + "Obiętościowy przepływ stali " + " | " +
+                "Przepływ Objetosciowy " + " | "+ " Skala Przeplywu " + " | " + " Przepływ w jednym " + " | " + " Przepływ w m/s " + " | " + " przepływ w jednym " + " | " + " Objetosc w Min " + " | ";
 
             zapiszDoPliku(tabelowe,przeplywObj);
         }
