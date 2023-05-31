@@ -8,6 +8,7 @@ namespace Iwpp
 {
     public class DaneZPliku
     {
+        public string NazwaPliku { set; get; }
         public string PrzeplywObjetosciowy { set; get; }
         public string SkalaPrzeplywu { set; get; }
         public string PrzeplywWJednym { set; get; }

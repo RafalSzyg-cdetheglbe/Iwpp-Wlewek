@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,6 +34,9 @@ namespace Iwpp
         String przeplywMs;
         String przeplywWJednym;
         String ObjwMin;
+        String nazwaPliku;
+
+
         Boolean czyJestJuzPlik;
 
         //TODO DODATKOWA WALIDACJA
@@ -71,7 +75,7 @@ namespace Iwpp
             Double gestoscStali = Double.Parse(g_stali_stale.Text);
 
             //POPRAWIONE
-            Double skalaPrzeplywu = Math.Pow(wspolczynnikSkali, 1.0 / 5);
+            Double skalaPrzeplywu = Math.Pow(wspolczynnikSkali, 5.0 / 2);
             //POPRAWIONE
             Double masowyPrzeplywStaliWSS = iloscZyl * wysokkoscW * szerokoscS * (predkoscWlewania/60) * 7600;
             //POPRAWIONE
@@ -80,9 +84,9 @@ namespace Iwpp
             Double przeplyw = skalaPrzeplywu * objetosciowyPrzeplywWSC;
 
             Double przeplywPrzezIloscZyl = przeplyw / iloscZyl;
-            Double przeplywWMetrach = przeplyw * 0.001 / 60*gestoscCiekla;
+            Double przeplywWMetrach = przeplyw * 0.001 / 60;
             Double przeplywWMetrachDlaJednejZyly = przeplywWMetrach / iloscZyl;
-            Double przeplywWMetrachNaMinute = przeplyw * 0.001 * gestoscCiekla;
+            Double przeplywWMetrachNaMinute = przeplyw * 0.001 ;
 
             przeplyw_obj_l_m.Text = przeplyw.ToString("G4");
             skala_przeplywu.Text = skalaPrzeplywu.ToString();
@@ -100,11 +104,13 @@ namespace Iwpp
 
 
             DaneZPliku daneZPliku = new DaneZPliku();
+            daneZPliku.NazwaPliku = this.nazwaPliku;
             daneZPliku.ObjetoscwMin = this.ObjwMin;
             daneZPliku.PrzeplywWJednym = this.przeplywMs;
             daneZPliku.PrzeplywObjetosciowy = this.przeplywObj;
             daneZPliku.SkalaPrzeplywu = this.skalaPrzeplywu;
             daneZPliku.PrzeplywWMs = this.przeplywMs;
+
 
             daneZPlikow.Add(daneZPliku);
                
@@ -124,22 +130,14 @@ namespace Iwpp
         private void szerokosc_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
-
-            masowy_przeplyw_staly.Text = "Wartosc";
-            obj_przepl_stali.Text = "Wartosc";
-
+          
             zapisz_btn.IsEnabled = false;
         }
 
         private void wysokosc_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
-
-
-            masowy_przeplyw_staly.Text = "Wartosc2";
-            obj_przepl_stali.Text = "Wartosc2";
+           
 
             zapisz_btn.IsEnabled = false;
 
@@ -148,12 +146,7 @@ namespace Iwpp
         private void ilosc_zyl_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
-
-
-
-            masowy_przeplyw_staly.Text = "Wartosc3";
-            obj_przepl_stali.Text = "Wartosc3";
+      
             zapisz_btn.IsEnabled = false;
 
         }
@@ -161,11 +154,7 @@ namespace Iwpp
         private void predkosc_wlewania_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
-
-
-            masowy_przeplyw_staly.Text = "Wartosc4";
-            obj_przepl_stali.Text = "Wartosc4";
+         
             zapisz_btn.IsEnabled = false;
 
         }
@@ -173,11 +162,8 @@ namespace Iwpp
         private void g_stali_stale_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
-
-
-            masowy_przeplyw_staly.Text = "Wartosc6";
-            obj_przepl_stali.Text = "Wartosc6";
+        
+          
             zapisz_btn.IsEnabled = false;
 
         }
@@ -186,11 +172,24 @@ namespace Iwpp
         {
 
 
+            Double wysokkoscW = Double.Parse(wysokosc.Text);
+            Double szerokoscS = Double.Parse(szerokosc.Text);
+            Double predkoscWlewania = Double.Parse(predkosc_wlewania.Text);
+            Double iloscZyl = Double.Parse(ilosc_zyl.Text);
+            Double gestoscCiekla = Double.Parse(g_stali_ciekle.Text);
+            Double gestoscStali = Double.Parse(g_stali_stale.Text);
+
             //TODO ZMIANA WARTOSCI W PRZEPRLYWACH DYNAMICZNIE WG WZORU
+            Double masowyPrzeplywStaliWSS = iloscZyl * wysokkoscW * szerokoscS * (predkoscWlewania / 60) * gestoscStali;
 
 
-            masowy_przeplyw_staly.Text = "Wartosc7";
-            obj_przepl_stali.Text = "Wartosc7";
+            if (!wysokkoscW.Equals(null) && !szerokoscS.Equals(null) && !predkoscWlewania.Equals(null) && !iloscZyl.Equals(null) && !gestoscCiekla.Equals(null) && !gestoscStali.Equals(null))
+            {
+                masowy_przeplyw_staly.Text = masowyPrzeplywStaliWSS.ToString();
+                obj_przepl_stali.Text = (masowyPrzeplywStaliWSS / gestoscCiekla).ToString();
+            }
+
+
 
             zapisz_btn.IsEnabled = false;
 
@@ -202,7 +201,18 @@ namespace Iwpp
             {
                 zapisz_btn.IsEnabled = false;
             }
-            else zapisz_btn.IsEnabled=true;
+            else
+            {
+                zapisz_btn.IsEnabled = true;
+                this.nazwaPliku = nazwa_pliku.Text;
+            }
+        }
+
+       
+
+        private void masowy_przeplyw_staly_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
