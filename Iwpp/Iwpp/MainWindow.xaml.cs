@@ -33,10 +33,6 @@ namespace Iwpp
         String przeplywMs;
         String przeplywWJednym;
         String ObjwMin;
-
-        String gestoscStala;
-        String gestoscCiekla;
-
         Boolean czyJestJuzPlik;
 
         //TODO DODATKOWA WALIDACJA
@@ -60,43 +56,33 @@ namespace Iwpp
             File.AppendAllText(nazwaPliku, '\n' + dane);
 
         }
-
-    
-
    
         private void licz_Click(object sender, RoutedEventArgs e)
         {
 
             //TODO PRAWIDLOWE WZORY
 
-
             Double wysokkoscW = Double.Parse(wysokosc.Text);
             Double szerokoscS= Double.Parse(szerokosc.Text);
             Double wspolczynnikSkali = Double.Parse(skala_lewa.Text) / Double.Parse(skalwa_prawa.Text);
             Double predkoscWlewania = Double.Parse(predkosc_wlewania.Text);
             Double iloscZyl= Double.Parse(ilosc_zyl.Text);
-
-
-            Double przeplyw;
-           
-
-            Double skalaPrzeplywu=(predkoscWlewania*wspolczynnikSkali)*wspolczynnikSkali*wspolczynnikSkali;
-
-
             Double gestoscCiekla = Double.Parse(g_stali_ciekle.Text);
-
             Double gestoscStali = Double.Parse(g_stali_stale.Text);
 
-
-            przeplyw = wysokkoscW * szerokoscS * (gestoscCiekla / gestoscStali) * wspolczynnikSkali * predkoscWlewania * 60 / 1000;
-
+            //POPRAWIONE
+            Double skalaPrzeplywu = Math.Pow(wspolczynnikSkali, 1.0 / 5);
+            //POPRAWIONE
+            Double masowyPrzeplywStaliWSS = iloscZyl * wysokkoscW * szerokoscS * (predkoscWlewania/60) * 7600;
+            //POPRAWIONE
+            Double objetosciowyPrzeplywWSC = masowyPrzeplywStaliWSS / 7000;
+            //POPRAWIONE
+            Double przeplyw = skalaPrzeplywu * objetosciowyPrzeplywWSC;
 
             Double przeplywPrzezIloscZyl = przeplyw / iloscZyl;
             Double przeplywWMetrach = przeplyw * 0.001 / 60*gestoscCiekla;
             Double przeplywWMetrachDlaJednejZyly = przeplywWMetrach / iloscZyl;
             Double przeplywWMetrachNaMinute = przeplyw * 0.001 * gestoscCiekla;
-
-            
 
             przeplyw_obj_l_m.Text = przeplyw.ToString("G4");
             skala_przeplywu.Text = skalaPrzeplywu.ToString();
@@ -111,9 +97,6 @@ namespace Iwpp
             this.przeplywMs= przeplywWMetrach.ToString(); ;
             this.przeplywWJednym=przeplywWMetrachDlaJednejZyly.ToString(); ;
             this.ObjwMin = przeplywWMetrachNaMinute.ToString(); 
-
-
-            //Q = A * v * (gęstość cieczy w stanie ciekłym / gęstość stali) * współczynnik skali liniowej * 60 / 1000
 
 
             DaneZPliku daneZPliku = new DaneZPliku();
