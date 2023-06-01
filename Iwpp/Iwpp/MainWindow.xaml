@@ -5,49 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Iwpp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1000" Width="1321">
+        Background="AliceBlue"
+        Title="Ciągłe odlewanie stali " Height="800" Width="900" MaxHeight="800" MinHeight="800" MaxWidth="900" MinWidth="900">
     <Grid Margin="0,0,10,0">
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="93*"/>
-            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="280*"/>
+            <ColumnDefinition Width="559*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="szerokosc" HorizontalAlignment="Left" Margin="167,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.252,0.922" Height="18" TextChanged="szerokosc_TextChanged"/>
-        <TextBox x:Name="wysokosc" HorizontalAlignment="Left" Margin="167,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="wysokosc_TextChanged"/>
-        <TextBox x:Name="ilosc_zyl" HorizontalAlignment="Left" Margin="167,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="ilosc_zyl_TextChanged"/>
-        <TextBox x:Name="g_stali_stale" HorizontalAlignment="Left" Margin="167,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="g_stali_stale_TextChanged"/>
-        <TextBox x:Name="g_stali_ciekle" HorizontalAlignment="Left" Margin="186,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="g_stali_ciekle_TextChanged"/>
-        <Label Content="Szerokość[m]" HorizontalAlignment="Left" Margin="56,46,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
-        <Label Content="wysokosc[m]" HorizontalAlignment="Left" Margin="56,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.288,-0.511" Height="26" Width="78"/>
-        <Label Content="Ilość żył" HorizontalAlignment="Left" Margin="56,162,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.124,-0.724" Height="26" Width="52"/>
-        <Label Content="Gęstość stali &#xD;&#xA;w stanie stałym" HorizontalAlignment="Left" Margin="30,239,0,0" VerticalAlignment="Top" Width="130" Height="42"/>
-        <Label Content="Gęstość stali &#xD;&#xA;w stanie ciekłym" HorizontalAlignment="Left" Margin="26,307,0,0" VerticalAlignment="Top" Height="42" Width="96"/>
-        <TextBox x:Name="masowy_przeplyw_staly" HorizontalAlignment="Left" Margin="186,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="masowy_przeplyw_staly_TextChanged"/>
-        <TextBox x:Name="obj_przepl_stali" HorizontalAlignment="Left" Margin="192,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox x:Name="skala_lewa" HorizontalAlignment="Left" Margin="260,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Grid.Column="1" Height="18"/>
-        <TextBox x:Name="skala_przeplywu" HorizontalAlignment="Left" Margin="260,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <Label Content="Masowy przepływ stali&#xD;&#xA; w stanie stałym" HorizontalAlignment="Left" Margin="26,370,0,0" VerticalAlignment="Top" Height="42" Width="129"/>
-        <Label Content="Objętościowy przepływ&#xD;&#xA;stali w stanie ciekłym" HorizontalAlignment="Left" Margin="18,421,0,0" VerticalAlignment="Top" Height="42" Width="156"/>
-        <TextBox x:Name="przeplyw_obj_m_s" Grid.Column="1" HorizontalAlignment="Left" Margin="271,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox x:Name="przeplyw_obj_l_m" Grid.Column="1" HorizontalAlignment="Left" Margin="271,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" />
-        <TextBox x:Name="przeplyw_obj_m_min" Grid.Column="1" HorizontalAlignment="Left" Margin="260,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox x:Name="przeplyw_jednym_wlewie_m_s" Grid.Column="1" HorizontalAlignment="Left" Margin="260,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="przeplyw_jednym_wlewie_l_min" Grid.Column="1" HorizontalAlignment="Left" Margin="260,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Grid.Column="1" Content="Skala" HorizontalAlignment="Left" Margin="157,60,0,0" VerticalAlignment="Top"/>
-        <Label Grid.Column="1" Content="skala przepływu&#xD;&#xA;obiętościowego" HorizontalAlignment="Left" Margin="120,120,0,0" VerticalAlignment="Top" Width="97" Height="43"/>
-        <Label Grid.Column="1" Content="przepływ obiętościowy [m^3/s]" HorizontalAlignment="Left" Margin="55,226,0,0" VerticalAlignment="Top" Width="216"/>
-        <Label Grid.Column="1" Content="przepływ obiętościowy [l/min]" HorizontalAlignment="Left" Margin="73,168,0,0" VerticalAlignment="Top"/>
-        <Label Grid.Column="1" Content="przepływ obiętościowy [m^3/min]" HorizontalAlignment="Left" Margin="55,289,0,0" VerticalAlignment="Top" Width="241"/>
-        <Label Grid.Column="1" Content="przepływ w jednym wylewie [m^3/s]" HorizontalAlignment="Left" Margin="38,350,0,0" VerticalAlignment="Top" Width="226"/>
-        <Label Content="przepływ w jednym wylewie [l/min]" HorizontalAlignment="Left" Margin="60,426,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="skalwa_prawa" HorizontalAlignment="Left" Margin="342,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Grid.Column="1" Height="18"/>
-        <Label Grid.Column="1" Content=":" HorizontalAlignment="Left" Margin="314,59,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="licz" Content="Oblicz" HorizontalAlignment="Left" Height="22" Margin="196,526,0,0" VerticalAlignment="Top" Width="116" Click="licz_Click"/>
-        <TextBox x:Name="predkosc_wlewania" HorizontalAlignment="Left" Margin="167,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="predkosc_wlewania_TextChanged"/>
-        <Label Content="Prędkość welwania" HorizontalAlignment="Left" Height="29" Margin="37,196,0,0" VerticalAlignment="Top" Width="130"/>
-        <DataGrid x:Name="data_grid" ItemsSource="{Binding }" Margin="10,649,0,10" Grid.ColumnSpan="2"/>
-        <Button x:Name="zapisz_btn" Content="Zapisz" HorizontalAlignment="Left" Margin="132,622,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="zapisz_btn_Click" IsEnabled="False"/>
-        <Label Content="Nazwa Pliku:" HorizontalAlignment="Left" Margin="30,580,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="nazwa_pliku" HorizontalAlignment="Left" Margin="111,584,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+
+        <TextBox x:Name="szerokosc" HorizontalAlignment="Left" Margin="147,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.252,0.922" Height="18" TextChanged="szerokosc_TextChanged" Grid.Column="2"/>
+        <TextBox x:Name="wysokosc" HorizontalAlignment="Left" Margin="147,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="wysokosc_TextChanged" Grid.Column="2"/>
+        <TextBox x:Name="ilosc_zyl" HorizontalAlignment="Left" Margin="147,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="ilosc_zyl_TextChanged" Grid.Column="2"/>
+        <TextBox x:Name="g_stali_stale" HorizontalAlignment="Left" Margin="147,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="g_stali_stale_TextChanged" Grid.Column="2"/>
+        <TextBox x:Name="g_stali_ciekle" HorizontalAlignment="Left" Margin="147,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="g_stali_ciekle_TextChanged" Grid.Column="2"/>
+        <Label Content="Szerokość[m]" HorizontalAlignment="Left" Margin="30,62,0,0" VerticalAlignment="Top" Height="26" Width="80" Grid.ColumnSpan="3"/>
+        <Label Content="wysokosc[m]" HorizontalAlignment="Left" Margin="30,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.288,-0.511" Height="26" Width="78" Grid.ColumnSpan="3"/>
+        <Label Content="Ilość żył" HorizontalAlignment="Left" Margin="35,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.124,-0.724" Height="26" Width="52" Grid.ColumnSpan="3"/>
+        <Label Content="Gęstość stali &#xD;&#xA;w stanie stałym" HorizontalAlignment="Left" Margin="35,234,0,0" VerticalAlignment="Top" Width="130" Height="42" Grid.ColumnSpan="3"/>
+        <Label Content="Gęstość stali &#xD;&#xA;w stanie ciekłym" HorizontalAlignment="Left" Margin="35,291,0,0" VerticalAlignment="Top" Height="42" Width="96" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="masowy_przeplyw_staly" HorizontalAlignment="Left" Margin="147,366,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" TextChanged="masowy_przeplyw_staly_TextChanged" Grid.Column="2"/>
+        <TextBox x:Name="obj_przepl_stali" HorizontalAlignment="Left" Margin="147,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Grid.Column="2"/>
+        <TextBox x:Name="skala_lewa" HorizontalAlignment="Center" Margin="0,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Grid.Column="3" Height="18"/>
+        <TextBox x:Name="skala_przeplywu" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="3" Height="18"/>
+        <Label Content="Masowy przepływ stali&#xD;&#xA; w stanie stałym" HorizontalAlignment="Left" Margin="35,350,0,0" VerticalAlignment="Top" Height="42" Width="129" Grid.ColumnSpan="3"/>
+        <Label Content="Objętościowy przepływ&#xD;&#xA;stali w stanie ciekłym" HorizontalAlignment="Left" Margin="35,406,0,0" VerticalAlignment="Top" Height="42" Width="156" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="przeplyw_obj_m_s" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
+        <TextBox x:Name="przeplyw_obj_l_m" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" />
+        <TextBox x:Name="przeplyw_obj_m_min" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
+        <TextBox x:Name="przeplyw_jednym_wlewie_m_s" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="przeplyw_jednym_wlewie_l_min" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,413,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Grid.Column="3" Content="Skala" HorizontalAlignment="Left" Margin="61,57,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="3" Content="skala przepływu&#xD;&#xA;obiętościowego" HorizontalAlignment="Left" Margin="61,106,0,0" VerticalAlignment="Top" Width="96" Height="42"/>
+        <Label Grid.Column="3" Content="przepływ obiętościowy [m^3/s]" HorizontalAlignment="Left" Margin="55,226,0,0" VerticalAlignment="Top" Width="216"/>
+        <Label Grid.Column="3" Content="przepływ obiętościowy [l/min]" HorizontalAlignment="Left" Margin="60,168,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Column="3" Content="przepływ obiętościowy [m^3/min]" HorizontalAlignment="Left" Margin="55,286,0,0" VerticalAlignment="Top" Width="241"/>
+        <Label Grid.Column="3" Content="przepływ w jednym wylewie [m^3/s]" HorizontalAlignment="Left" Margin="54,346,0,0" VerticalAlignment="Top" Width="226"/>
+        <Label Content="przepływ w jednym wylewie [l/min]" HorizontalAlignment="Left" Margin="55,407,0,0" VerticalAlignment="Top" Grid.Column="3"/>
+        <TextBox x:Name="skalwa_prawa" HorizontalAlignment="Left" Margin="342,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Grid.Column="3" Height="18"/>
+        <Label Grid.Column="3" Content=":" HorizontalAlignment="Left" Margin="314,59,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="licz" Content="Oblicz" HorizontalAlignment="Left" Height="22" Margin="145,526,0,0" VerticalAlignment="Top" Width="116" Click="licz_Click" Grid.Column="2"/>
+        <TextBox x:Name="predkosc_wlewania" HorizontalAlignment="Left" Margin="147,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="predkosc_wlewania_TextChanged" Grid.Column="2"/>
+        <Label Content="Prędkość welwania" HorizontalAlignment="Left" Height="29" Margin="30,197,0,0" VerticalAlignment="Top" Width="130" Grid.ColumnSpan="3"/>
+        <DataGrid x:Name="data_grid" ItemsSource="{Binding }" Margin="10,649,0,10" Grid.ColumnSpan="4"/>
+        <Button x:Name="zapisz_btn" Content="Zapisz" HorizontalAlignment="Left" Margin="81,622,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="zapisz_btn_Click" IsEnabled="False" Grid.Column="2"/>
+        <Label Content="Nazwa Pliku:" HorizontalAlignment="Left" Margin="30,580,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="nazwa_pliku" HorizontalAlignment="Left" Margin="60,584,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="2"/>
+        <Label x:Name="tytul" Foreground="DeepSkyBlue" Grid.Column="2" FontSize="20" FontWeight="Bold" Content="CIĄGŁE ODLEWANIE STALI W KADZI POŚREDNIEJ" HorizontalAlignment="Left" Margin="123,15,0,0" VerticalAlignment="Top" Width="542" Grid.ColumnSpan="2"/>
 
     </Grid>
 
