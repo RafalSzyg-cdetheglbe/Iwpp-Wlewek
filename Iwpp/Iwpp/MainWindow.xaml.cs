@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -61,7 +62,7 @@ namespace Iwpp
             przeplyw_jednym_wlewie_l_min.Background = new SolidColorBrush(Colors.LightBlue);
             przeplyw_obj_m_s.Background = new SolidColorBrush(Colors.LightBlue);
             przeplyw_jednym_wlewie_m_s.Background = new SolidColorBrush(Colors.LightBlue);
-            przeplyw_obj_m_min.Background = new SolidColorBrush(Colors.LightBlue);
+            przeplyw_obj_l_h.Background = new SolidColorBrush(Colors.LightBlue);
 
             wysokosc.Background = new SolidColorBrush(Colors.LightBlue);
             szerokosc.Background = new SolidColorBrush(Colors.LightBlue);
@@ -80,15 +81,22 @@ namespace Iwpp
 
         private void zapiszDoPliku(String tabelowe, String dane)
         {
-            String nazwaPliku = nazwa_pliku.Text + ".xml";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XML Files (.xml)|.xml";
+            saveFileDialog.DefaultExt = "xml";
+            saveFileDialog.AddExtension = true;
 
-            if (!File.Exists(nazwaPliku))
+            if (saveFileDialog.ShowDialog() == true)
             {
-                File.WriteAllText(nazwaPliku, tabelowe + '\n' + dane);
-            }
-            else
-                File.AppendAllText(nazwaPliku, '\n' + dane);
+                String nazwaPliku = saveFileDialog.FileName;
 
+                if (!File.Exists(nazwaPliku))
+                {
+                    File.WriteAllText(nazwaPliku, tabelowe + '\n' + dane);
+                }
+                else
+                    File.AppendAllText(nazwaPliku, '\n' + dane);
+            }
         }
 
         private void licz_Click(object sender, RoutedEventArgs e)
@@ -114,22 +122,24 @@ namespace Iwpp
                 //POPRAWIONE
                 Double przeplyw = skalaPrzeplywu * objetosciowyPrzeplywWSC;
 
+                Double przeplywWLitrachNaminute = przeplyw * 60000;
                 Double przeplywPrzezIloscZyl = przeplyw / iloscZyl;
-                Double przeplywWMetrach = przeplyw * 0.001 / 60;
-                Double przeplywWMetrachDlaJednejZyly = przeplywWMetrach / iloscZyl;
+                Double przeplywWLitrachNaGodzine = przeplyw * 3600000;
+                Double przeplywWMetrachDlaJednejZyly = przeplyw / iloscZyl;
                 Double przeplywWMetrachNaMinute = przeplyw * 0.001;
+                Double przeplywWLitrachNaMinuteDlaEJdnejZyly = przeplywWLitrachNaminute / iloscZyl;
 
-                przeplyw_obj_l_m.Text = przeplyw.ToString("G4");
-                skala_przeplywu.Text = skalaPrzeplywu.ToString();
-                przeplyw_jednym_wlewie_l_min.Text = przeplywPrzezIloscZyl.ToString("G4");
-                przeplyw_obj_m_s.Text = przeplywWMetrach.ToString("G4");
-                przeplyw_jednym_wlewie_m_s.Text = przeplywWMetrachDlaJednejZyly.ToString("G4");
-                przeplyw_obj_m_min.Text = przeplywWMetrachNaMinute.ToString("G4");
+                przeplyw_obj_l_m.Text = przeplywWLitrachNaminute.ToString("F4");
+                skala_przeplywu.Text = skalaPrzeplywu.ToString("F4");
+                przeplyw_jednym_wlewie_l_min.Text = przeplywWLitrachNaMinuteDlaEJdnejZyly.ToString("F4");
+                przeplyw_obj_m_s.Text = przeplyw.ToString("F4");
+                przeplyw_jednym_wlewie_m_s.Text = przeplywPrzezIloscZyl.ToString("F4");
+                przeplyw_obj_l_h.Text = przeplywWLitrachNaGodzine.ToString("F4");
 
                 this.przeplywObj = przeplyw.ToString(); ;
                 this.skalaPrzeplywu = skalaPrzeplywu.ToString(); ;
                 this.przeplywWJednymLnaMin = przeplywPrzezIloscZyl.ToString(); ;
-                this.przeplywMs = przeplywWMetrach.ToString(); ;
+                this.przeplywMs = przeplywWLitrachNaminute.ToString(); ;
                 this.przeplywWJednym = przeplywWMetrachDlaJednejZyly.ToString(); ;
                 this.ObjwMin = przeplywWMetrachNaMinute.ToString();
                 this.wysokoscw = wysokoscW.ToString();
@@ -139,7 +149,7 @@ namespace Iwpp
                 this.gestoscStaliWStanieStalym = gestoscStali.ToString();
                 this.gestoscStaliWStanieCieklym = gestoscCiekla.ToString();
 
-
+               
 
                 DaneZPliku daneZPliku = new DaneZPliku();
                 daneZPliku.NazwaPliku = this.nazwaPliku;
@@ -246,8 +256,8 @@ namespace Iwpp
 
                 if (!wysokkoscW.Equals(null) && !szerokoscS.Equals(null) && !predkoscWlewania.Equals(null) && !iloscZyl.Equals(null) && !gestoscCiekla.Equals(null) && !gestoscStali.Equals(null))
                 {
-                    masowy_przeplyw_staly.Text = masowyPrzeplywStaliWSS.ToString();
-                    obj_przepl_stali.Text = (masowyPrzeplywStaliWSS / gestoscCiekla).ToString();
+                    masowy_przeplyw_staly.Text = masowyPrzeplywStaliWSS.ToString("F4");
+                    obj_przepl_stali.Text = (masowyPrzeplywStaliWSS / gestoscCiekla).ToString("F4");
                 }
             }
             catch (Exception e)

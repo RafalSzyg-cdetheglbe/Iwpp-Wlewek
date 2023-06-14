@@ -34,14 +34,14 @@
         <Label Content="Objętościowy przepływ&#xD;&#xA;stali w stanie ciekłym" HorizontalAlignment="Left" Margin="35,406,0,0" VerticalAlignment="Top" Height="42" Width="156" Grid.ColumnSpan="3"/>
         <TextBox x:Name="przeplyw_obj_m_s" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
         <TextBox x:Name="przeplyw_obj_l_m" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" />
-        <TextBox x:Name="przeplyw_obj_m_min" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
+        <TextBox x:Name="przeplyw_obj_l_h" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18"/>
         <TextBox x:Name="przeplyw_jednym_wlewie_m_s" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="przeplyw_jednym_wlewie_l_min" Grid.Column="3" IsReadOnly="True" HorizontalAlignment="Left" Margin="260,413,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Grid.Column="3" Content="Skala" HorizontalAlignment="Left" Margin="61,57,0,0" VerticalAlignment="Top"/>
         <Label Grid.Column="3" Content="skala przepływu&#xD;&#xA;obiętościowego" HorizontalAlignment="Left" Margin="61,106,0,0" VerticalAlignment="Top" Width="96" Height="42"/>
         <Label Grid.Column="3" Content="przepływ obiętościowy [m^3/s]" HorizontalAlignment="Left" Margin="55,226,0,0" VerticalAlignment="Top" Width="216"/>
         <Label Grid.Column="3" Content="przepływ obiętościowy [l/min]" HorizontalAlignment="Left" Margin="60,168,0,0" VerticalAlignment="Top"/>
-        <Label Grid.Column="3" Content="przepływ obiętościowy [m^3/min]" HorizontalAlignment="Left" Margin="55,286,0,0" VerticalAlignment="Top" Width="241"/>
+        <Label Grid.Column="3" Content="przepływ obiętościowy [l/h]" HorizontalAlignment="Left" Margin="55,286,0,0" VerticalAlignment="Top" Width="195"/>
         <Label Grid.Column="3" Content="przepływ w jednym wylewie [m^3/s]" HorizontalAlignment="Left" Margin="54,346,0,0" VerticalAlignment="Top" Width="226"/>
         <Label Content="przepływ w jednym wylewie [l/min]" HorizontalAlignment="Left" Margin="55,407,0,0" VerticalAlignment="Top" Grid.Column="3"/>
         <TextBox x:Name="skalwa_prawa" HorizontalAlignment="Left" Margin="342,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Grid.Column="3" Height="18"/>
@@ -51,8 +51,8 @@
         <Label Content="Prędkość welwania" HorizontalAlignment="Left" Height="29" Margin="30,197,0,0" VerticalAlignment="Top" Width="130" Grid.ColumnSpan="3"/>
         <DataGrid x:Name="data_grid" ItemsSource="{Binding }" Margin="10,649,0,10" Grid.ColumnSpan="4"/>
         <Button x:Name="zapisz_btn" Content="Zapisz" HorizontalAlignment="Left" Margin="81,622,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="zapisz_btn_Click" IsEnabled="False" Grid.Column="2"/>
-        <Label Content="Nazwa Pliku:" HorizontalAlignment="Left" Margin="30,580,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="nazwa_pliku" HorizontalAlignment="Left" Margin="60,584,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="2"/>
+        <Label Content="Nazwa Pliku:" HorizontalAlignment="Left" Margin="0,466,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <TextBox x:Name="nazwa_pliku" HorizontalAlignment="Left" Margin="150,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="2"/>
         <Label x:Name="tytul" Foreground="DeepSkyBlue" Grid.Column="2" FontSize="20" FontWeight="Bold" Content="CIĄGŁE ODLEWANIE STALI W KADZI POŚREDNIEJ" HorizontalAlignment="Left" Margin="123,15,0,0" VerticalAlignment="Top" Width="542" Grid.ColumnSpan="2"/>
 
     </Grid>
